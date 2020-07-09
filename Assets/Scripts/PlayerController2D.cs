@@ -127,10 +127,8 @@ public class PlayerController2D : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
-			print("wow");
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-			print(m_JumpForce);
 		}
 	}
 
@@ -144,5 +142,11 @@ public class PlayerController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+	
+	private void Update() {
+		if (Input.GetKeyDown("tab")) {
+			print("gallantKnight:" + BadgeManager.gallantKnight);
+		}
 	}
 }
