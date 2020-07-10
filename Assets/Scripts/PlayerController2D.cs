@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -18,12 +19,12 @@ public class PlayerController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-
+	
 	[Header("Events")]
 	[Space]
 
 	public UnityEvent OnLandEvent;
-
+	public float deathBarrier = -20f;
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
@@ -33,7 +34,8 @@ public class PlayerController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
 
@@ -45,7 +47,10 @@ public class PlayerController2D : MonoBehaviour
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
-
+		if (this.transform.position.y < deathBarrier) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+			
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);

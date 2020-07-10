@@ -32,7 +32,7 @@ public class BadgeManager : MonoBehaviour
                     break;
             }
 
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Hub");
 
         }
         

@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="BadgeManager.cs" t="Include" />
+          <e p="MainMenu.cs" t="Include" />
           <e p="PauseMenuController.cs" t="Include" />
           <e p="PlayerController2D.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
