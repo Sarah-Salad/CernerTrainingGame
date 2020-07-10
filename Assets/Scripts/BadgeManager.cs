@@ -12,6 +12,7 @@ public class BadgeManager : MonoBehaviour
     public static bool vigilantGuardian = false;
 
     public int badge;
+    public string sceneToLoad;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.transform.tag == "Player") {
@@ -32,7 +33,7 @@ public class BadgeManager : MonoBehaviour
                     break;
             }
 
-            SceneManager.LoadScene("Hub");
+            SceneManager.LoadScene(sceneToLoad);
 
         }
         

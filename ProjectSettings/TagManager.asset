@@ -6,6 +6,9 @@ TagManager:
   tags:
   - New tag
   - Ground
+  - Projectile
+  - Email
+  - PlayerDamager
   layers:
   - Default
   - TransparentFX
